@@ -1,0 +1,920 @@
+---
+title: "EDA LA1"
+output:
+  word_document: default
+  html_document: default
+---
+
+
+```{r}
+df=read.csv('world-happiness-report.csv')
+head(df)
+head(df,n=10)
+tail(df)
+tail(df,n=10)
+summary(df)
+dim(df)
+dimnames(head(df))
+row(df)
+row.names(df)
+col(df)
+colnames(df)
+class(df)
+class(df$year)
+class(df$Life.Ladder)
+class(df$Log.GDP.per.capita)
+class(df$Social.support)
+class(df$Healthy.life.expectancy.at.birth)
+class(df$Freedom.to.make.life.choices)
+class(df$Generosity)
+```
+
+
+```{r}
+class(df$Positive.affect)
+class(df$Perceptions.of.corruption)
+class(df$Negative.affect)
+str(df)
+head(stack(df))
+head(unstack(df))
+head(rank(df))
+head(order(df))
+length(df$year)
+length(df$Social.support)
+length(df$Generosity)
+mean(df$Social.support)
+mean(df$Positive.affect)
+median(df$Positive.affect)
+median(df$year)
+mad(df$Positive.affect)
+mode(df$Social.support)
+var(df$Positive.affect)
+sd(df$Positive.affect)
+quantile(df$Life.Ladder)
+fivenum(df$Positive.affect)
+cov(df$Positive.affect,df$Negative.affect)
+var.test(df$Positive.affect,df$Negative.affect)
+head(structure(df))
+ls.str(df)
+ls.str(pattern = 'df')
+names(df)
+row.names(df)
+colnames(df)
+length(df)
+head(df$Positive.affect)
+
+```
+
+```{r}
+df$Positive.affect[3]
+df$Positive.affect[1:5]
+attach(df)
+max(df$Positive.affect)
+max(df$Negative.affect)
+min(df$Positive.affect)
+min(df$Negative.affect)
+head(sort(df$Positive.affect))
+head(sort(df$Negative.affect))
+head(order(df$Positive.affect))
+head(rank(df$Positive.affect))
+df[3,3]
+df[3,1:5]
+head(as.matrix(df))
+head(rbind(df))
+head(cbind(df))
+head(cumsum(df$Log.GDP.per.capita))
+head(cummax(df$Log.GDP.per.capita))
+head(cummin(df$Log.GDP.per.capita))
+head(cumprod(df$Log.GDP.per.capita))
+table(df$Life.Ladder)
+head(as.table(df$Life.Ladder))
+is.data.frame(df)
+is.table(df)
+```
+
+```{r}
+View(df)
+nrow(df)
+ncol(df)
+sum(is.na(df))
+df[is.na(df)]
+class(dimnames(df))
+seq_along(df)
+if(class(df) == 'data.frame') TRUE else FALSE
+stem(df$Life.Ladder)
+stem(df$Log.GDP.per.capita)
+stem(df$Positive.affect)
+stem(df$Life.Ladder,scale = 2)
+stem(df$Log.GDP.per.capita,scale = 2)
+with(df,stem(df$Log.GDP.per.capita[df$ï..Country.name == 'India']))
+seq(from = 1, to = 4, by =1)
+with(df,stem(df$Life.Ladder[df$ï..Country.name == 'India']))
+with(df,stem(df$Positive.affect[df$ï..Country.name == 'India']))
+with(df,stem(df$Social.support[df$ï..Country.name == 'India']))
+plot(df)
+df$df
+mean(df[,2])
+mean(df[2,])
+mean(df[1,])
+dimnames(head(df))[[1]]
+dimnames(head(df))[[2]]
+```
+```{r}
+ls()
+ls(pattern = 'da')
+ls(pattern = 'p')
+plot(df$Log.GDP.per.capita)
+df1=df
+df1[is.na(df1)]=0
+df1
+hist(df1$Life.Ladder)
+hist(df1$Log.GDP.per.capita, breaks = 'Sturges')
+hist(df1$Life.Ladder, breaks = 'Scott')
+hist(df1$Social.support, breaks = 'FD')
+hist(df1$Positive.affect, breaks = 'st')
+hist(df1$Log.GDP.per.capita, breaks = 10)
+hist(df1$Generosity, col = 'gray', main = NULL, xlab = 'Size', ylim = c(0, 3), freq = FALSE)
+plot(df1$Life.Ladder)
+plot(df1$Social.support)
+plot(df1$Healthy.life.expectancy.at.birth)
+plot(df1$Freedom.to.make.life.choices)
+sin(head(df1$Life.Ladder))
+cos(head(df1$Life.Ladder))
+factorial(head(df$Social.support))
+abs(head(df1$Life.Ladder))
+sqrt(head(df1$Log.GDP.per.capita))
+tan(head(df1$Freedom.to.make.life.choices))
+asin(head(df1$Generosity))
+head(df1[1])
+head(df1[1:4])
+head(df1[-1])
+head(df1[df1 > 7])
+head(df1[df1 < 5 | df1 > 10], n = 10)
+```
+
+
+```{r}
+sort(head(df1$Life.Ladder), decreasing = TRUE)
+sort(head(df1$Log.GDP.per.capita), na.last = NA)
+sort(head(df1$Log.GDP.per.capita), na.last = TRUE)
+sort(head(df1$Life.Ladder), na.last = FALSE)
+df1[1003,7]
+df1[777,1:5]
+head(df1[7])
+with(df1, sum(Life.Ladder))
+names(df1)
+sd(df1$Life.Ladder)
+mad(df1$Life.Ladder, na.rm = FALSE)
+density(df1$Life.Ladder)
+hist(df1$Perceptions.of.corruption)
+hist(df1$Negative.affect)
+hist(df1$Generosity, col = 'lightblue', main = NULL, xlab = 'Size', ylim = c(0, 3), freq = FALSE)
+density(df1$Log.GDP.per.capita)
+density(df1$Social.support)
+plot(density(df1$Life.Ladder))
+plot(density(df1$Log.GDP.per.capita))
+plot(density(df1$Social.support))
+plot(density(df1$Healthy.life.expectancy.at.birth))
+plot(density(df1$Freedom.to.make.life.choices))
+plot(density(df1$Generosity))
+plot(density(df1$Positive.affect))
+
+```
+```{r}
+hist(df1$Life.Ladder,freq = F)
+lines(density(df1$Life.Ladder),lty=2)
+lines(density(df1$Life.Ladder,k='rectangular'))
+```
+```{r}
+hist(df1$Log.GDP.per.capita,freq = F)
+lines(density(df1$Log.GDP.per.capita),lty=2)
+lines(density(df1$Log.GDP.per.capita,k='rectangular'))
+```
+
+
+```{r}
+hist(df1$Social.support,freq = F)
+lines(density(df1$Social.support),lty=2)
+lines(density(df1$Social.support,k='rectangular'))
+```
+
+```{r}
+hist(df1$Positive.affect,freq = F)
+lines(density(df1$Positive.affect),lty=2)
+lines(density(df1$Positive.affect,k='rectangular'))
+```
+
+```{r}
+head(rnorm(df1$Life.Ladder,mean = 0,sd=1))
+head(rnorm(df1$Log.GDP.per.capita,mean = 0,sd=1))
+head(rnorm(df1$Positive.affect,mean = 0,sd=1))
+head(pnorm(df1$Life.Ladder,mean = 0,sd=1))
+head(pnorm(df1$Healthy.life.expectancy.at.birth,mean = 0,sd=1))
+head(pnorm(df1$Social.support,mean = 0,sd=1))
+head(qnorm(df1$Life.Ladder,mean = 0,sd=1))
+head(qnorm(df1$Log.GDP.per.capita,mean = 0,sd=1))
+head(qnorm(df1$Generosity,mean = 0,sd=1))
+head(dnorm(df1$Generosity,mean = 0,sd=1))
+head(dnorm(df1$Life.Ladder,mean = 0,sd=1))
+head(dnorm(df1$Log.GDP.per.capita,mean = 0,sd=1))
+qqnorm(df$Life.Ladder)
+qqnorm(df$Log.GDP.per.capita)
+qqnorm(df$Positive.affect)
+
+```
+```{r}
+qqnorm(df1$Life.Ladder, main = 'QQ plot of df1$Life.Ladder', xlab = 'Theoretical', 
+ylab = 'Quantiles for df1$Life.Ladder')
+qqline(df1$Life.Ladder, lwd = 2, lty = 2)
+
+qqnorm(df1$Log.GDP.per.capita, main = 'QQ plot of df1$Log.GDP.per.capita', xlab = 'Theoretical', 
+ylab = 'Quantiles for df1$Log.GDP.per.capita')
+qqline(df1$Log.GDP.per.capita, lwd = 2, lty = 2)
+
+qqnorm(df1$Social.support, main = 'QQ plot of df1$Social.support', xlab = 'Theoretical', 
+ylab = 'Quantiles for df1$Social.support')
+qqline(df1$Social.support, lwd = 2, lty = 2)
+
+qqnorm(df1$Positive.affect, main = 'QQ plot of df1$Positive.affect', xlab = 'Theoretical', 
+ylab = 'Quantiles for df1$Positive.affect')
+qqline(df1$Positive.affect, lwd = 2, lty = 2)
+```
+```{r}
+qqplot(df1$Life.Ladder, df1$Log.GDP.per.capita)
+qqplot(df1$Social.support, df1$Healthy.life.expectancy.at.birth)
+qqplot(df1$Freedom.to.make.life.choices, df1$Generosity)
+qqplot(df1$Perceptions.of.corruption, df1$Positive.affect)
+qqplot(df1$Negative.affect, df1$Positive.affect)
+
+qqp = qqplot(df1$Life.Ladder, df1$Log.GDP.per.capita)
+abline(lm(qqp$y ~ qqp$x))
+
+qqp = qqplot(df1$Positive.affect, df1$Negative.affect)
+abline(lm(qqp$y ~ qqp$x))
+
+qqp = qqplot(df1$Social.support, df1$Healthy.life.expectancy.at.birth)
+abline(lm(qqp$y ~ qqp$x))
+
+t.test(df1$Positive.affect, df1$Negative.affect)
+t.test(df1$Life.Ladder, df1$Log.GDP.per.capita)
+t.test(df1$Generosity, df1$Freedom.to.make.life.choices)
+
+t.test(df1$Log.GDP.per.capita, df1$Life.Ladder, var.equal = TRUE)
+t.test(df1$Generosity, df1$Perceptions.of.corruption, var.equal = TRUE)
+t.test(df1$Positive.affect, df1$Negative.affect, var.equal = TRUE)
+
+t.test(df1$Life.Ladder, mu = 5)
+t.test(df1$Log.GDP.per.capita, mu = 5)
+t.test(df1$Positive.affect, mu = 5)
+
+t.test(df1$Life.Ladder, mu = 5, alternative = 'greater')
+t.test(df1$Positive.affect, mu = 5, alternative = 'greater')
+
+t.test(df1$Life.Ladder ~ df1$ï..Country.name, data = df, subset = df1$ï..Country.name %in% c('India' , 'Australia'))
+
+t.test(df1$Log.GDP.per.capita ~ df1$ï..Country.name, data = df, subset = df1$ï..Country.name %in% c('India' , 'Australia'))
+
+table(df1$ï..Country.name)
+
+t.test(df1$Positive.affect ~ df1$ï..Country.name, data = df, subset = df1$ï..Country.name %in% c('India' , 'United States'))
+
+```
+```{r}
+wilcox.test(df1$Life.Ladder, df1$Log.GDP.per.capita)
+wilcox.test(df1$Healthy.life.expectancy.at.birth, df1$Freedom.to.make.life.choices)
+wilcox.test(df1$Positive.affect, df1$Negative.affect)
+
+cor(df1$Life.Ladder, df1$Log.GDP.per.capita)
+cor(df1$Positive.affect, df1$Negative.affect)
+cor(df1$Social.support, df1$Healthy.life.expectancy.at.birth)
+
+x = cov(df1$Life.Ladder, df1$Log.GDP.per.capita)
+x
+y = cov(df1$Social.support, df1$Healthy.life.expectancy.at.birth)
+y
+z = cov(df1$Positive.affect, df1$Negative.affect)
+z
+
+v = as.matrix(x)
+cov2cor(v)
+w = as.matrix(y)
+cov2cor(w)
+u = as.matrix(z)
+cov2cor(u)
+
+cor.test(df1$Life.Ladder, df1$Log.GDP.per.capita)
+cor.test(df1$Positive.affect, df1$Negative.affect)
+cor.test(df1$Perceptions.of.corruption, df1$Generosity)
+
+chisq.test(df1$Life.Ladder)
+chisq.test(df1$Positive.affect)
+chisq.test(df1$Log.GDP.per.capita)
+```
+```{r}
+boxplot(df1$Life.Ladder)
+boxplot(df1$Positive.affect)
+boxplot(df1$Log.GDP.per.capita)
+boxplot(df1$Negative.affect)
+boxplot(df1$Life.Ladder, df1$Log.GDP.per.capita)
+boxplot(df1$Positive.affect, df1$Negative.affect)
+
+boxplot(df1$Life.Ladder ~ df1$year, data = df)
+boxplot(df1$Positive.affect ~ df1$year, data = df)
+boxplot(df1$Log.GDP.per.capita ~ df1$year, data = df)
+
+boxplot(df1$Generosity ~ df$ï..Country.name, data = df)
+boxplot(df1$Life.Ladder ~ df1$ï..Country.name, data = df)
+
+boxplot(df1$Freedom.to.make.life.choices ~ df1$year)
+boxplot(df1$Generosity ~ df1$year)
+
+boxplot(df1$Life.Ladder, horizontal = T)
+title(xlab = 'Life.Ladder values')
+
+boxplot(df1$Log.GDP.per.capita, horizontal = T)
+title(xlab = 'GDP values')
+
+boxplot(df1$Positive.affect, horizontal = T)
+title(xlab = 'Positive values')
+
+boxplot(df1$Negative.affect, horizontal = T)
+title(xlab = 'Negative values')
+```
+```{r}
+library(dplyr)
+temp = df1 %>% filter(df1$ï..Country.name == "India")
+plot(temp$Life.Ladder, temp$Log.GDP.per.capita, pch = 25)
+
+temp1 = df1 %>% filter(df1$ï..Country.name == "India")
+plot(temp1$Positive.affect, temp1$Negative.affect, pch = 25)
+
+temp2 = df1 %>% filter(df1$ï..Country.name == "United States")
+plot(temp2$Log.GDP.per.capita, temp2$Positive.affect, pch = 25)
+
+temp3 = df1 %>% filter(df1$ï..Country.name == "United Kingdom")
+plot(temp3$Life.Ladder, temp3$Positive.affect, pch = 25)
+
+
+with(df1, plot(df1$Life.Ladder[df1$ï..Country.name == 'India'], pch = 0))
+with(df1, plot(df1$Life.Ladder[df1$ï..Country.name == 'India'], pch = 3))
+with(df1, plot(df1$Positive.affect[df1$ï..Country.name == 'India'], pch = 1))
+with(df1, plot(df1$Log.GDP.per.capita[df1$ï..Country.name == 'United States'], pch = 2))
+with(df1, plot(df1$Life.Ladder[df1$ï..Country.name == 'Australia'], pch = 4))
+
+with(df1, (df1$Positive.affect[df1$ï..Country.name == 'India']))
+with(df1, (df1$Log.GDP.per.capita[df1$ï..Country.name == 'Australia']))
+with(df1, (df1$Life.Ladder[df1$ï..Country.name == 'United States']))
+
+pairs(~ Positive.affect + Negative.affect, data = temp)
+pairs(~ Log.GDP.per.capita + Negative.affect, data = temp1)
+pairs(~ Positive.affect + Negative.affect, data = temp2)
+pairs(~ Positive.affect + Negative.affect, data = temp3)
+
+```
+```{r}
+plot(temp$Life.Ladder, type = 'l' )
+plot(temp1$Log.GDP.per.capita, type = 'l' )
+plot(temp2$Positive.affect, type = 'l' )
+plot(temp3$Freedom.to.make.life.choices, type = 'l' )
+
+plot(temp$Social.support, type = 'b')
+plot(temp$Healthy.life.expectancy.at.birth, type = 'b')
+plot(temp2$Generosity, type = 'b')
+
+pie(temp$Life.Ladder)
+pie(temp3$Generosity)
+
+temp4 = df1 %>% filter(df1$ï..Country.name == "Australia")
+pie(temp4$Generosity)
+
+pie(temp2$Perceptions.of.corruption)
+pie(temp4$Negative.affect)
+
+dotchart(temp$Life.Ladder)
+dotchart(temp1$Log.GDP.per.capita)
+dotchart(temp2$Social.support)
+dotchart(temp3$Negative.affect)
+dotchart(temp4$Positive.affect)
+
+barplot(temp$Life.Ladder)
+title(xlab = 'India', ylab = 'Life.Ladder value')
+box()
+
+barplot(temp1$Log.GDP.per.capita)
+title(xlab = 'India', ylab = 'GDP value')
+box()
+
+barplot(temp2$Positive.affect)
+title(xlab = 'United States', ylab = 'Positive value')
+box()
+
+barplot(temp3$Negative.affect)
+title(xlab = 'United Kingdom', ylab = 'Negative value')
+box()
+
+barplot(temp4$Life.Ladder)
+title(xlab = 'Australia', ylab = 'Life.Ladder value')
+box()
+
+```
+```{r}
+table(df1$year)
+
+barplot(temp$Life.Ladder, horiz = T)
+title(xlab = 'Life.Ladder value', ylab = 'India')
+box()
+
+barplot(temp1$Log.GDP.per.capita, horiz = T)
+title(xlab = 'GDP value', ylab = 'India')
+box()
+
+barplot(temp2$Social.support, horiz = T)
+title(xlab = 'Social.support value', ylab = 'United States')
+box()
+
+barplot(temp3$Generosity, horiz = T)
+title(xlab = 'Generosity value', ylab = 'United Kingdom')
+box()
+
+barplot(temp4$Positive.affect, horiz = T)
+title(xlab = 'Positive value', ylab = 'Australia')
+box()
+```
+```{r}
+temp.aov = na.omit(aov(temp$Life.Ladder ~ temp$Log.GDP.per.capita, data = temp))
+temp.aov
+
+temp1.aov = na.omit(aov(temp1$Social.support ~ temp1$Healthy.life.expectancy.at.birth, data = temp1))
+temp1.aov
+
+temp2.aov = na.omit(aov(temp2$Freedom.to.make.life.choices ~ temp2$Generosity, data = temp2))
+temp2.aov
+
+temp3.aov = na.omit(aov(temp3$Positive.affect ~ temp3$Negative.affect, data = temp3))
+temp3.aov
+
+temp4.aov = na.omit(aov(temp4$Life.Ladder ~ temp4$Negative.affect, data = temp4))
+temp4.aov
+
+summary(temp.aov)
+summary(temp1.aov)
+summary(temp2.aov)
+summary(temp3.aov)
+summary(temp4.aov)
+
+toway = aov(Life.Ladder ~ Negative.affect * Positive.affect, data = temp)
+toway
+
+toway = aov(Life.Ladder ~ Social.support * Positive.affect, data = temp2)
+toway
+
+toway = aov(Life.Ladder ~ Log.GDP.per.capita * Positive.affect, data = temp4)
+toway
+```
+```{r}
+interaction.plot(temp$Life.Ladder, temp$Positive.affect, temp$year)
+interaction.plot(temp2$Log.GDP.per.capita, temp2$Positive.affect, temp2$Negative.affect)
+interaction.plot(temp4$ï..Country.name, temp4$Life.Ladder, temp4$Generosity)
+
+factor(df1$Life.Ladder_setting)
+factor(df1$year_setting)
+factor(df1$ï..Country.name)
+
+testCol = c(rep(df1$Life.Ladder - df1$Log.GDP.per.capita, length(df1)))
+head(testCol)
+
+testCol1 = c(rep(df1$Positive.affect - df1$Negative.affect, length(df1)))
+head(testCol1)
+
+testCol2 = c(rep(df1$Healthy.life.expectancy.at.birth - df1$Generosity, length(df1)))
+head(testCol2)
+
+testRow = c('India', '2021', 3.456, 6.789, 0.912, 70.54, 0.897, 0.157, 0.823, 0.752, 0.245)
+testRow
+
+testRow1 = c('Japan', '2021', 4.567, 7.890, 0.923, 69.89, 0.756, 0.254, 0.234, 0.825, 0.321)
+testRow1
+
+testRow2 = c('Italy', '2021', 5.678, 8.901, 0.934, 67.56, 0.985, 0.123, 0.752, 0.644, 0.245)
+testRow2
+
+
+```
+```{r}
+test = data.frame(df1, testCol)
+head(test)
+
+test1 = data.frame(df1, testCol1)
+head(test)
+
+test2 = data.frame(df1, testCol2)
+head(test)
+
+test = df1
+test['testRow',] = testRow
+tail(test)
+
+test1 = df
+test1['testRow1',] = testRow1
+tail(test1)
+
+test2 = df
+test2['testRow2',] = testRow2
+tail(test2)
+
+test = df
+test["Test",] = NA
+tail(test)
+
+col(temp, as.factor = F)
+col(temp4, as.factor = F)
+
+x = df[ , 10:11]
+head(x)
+
+y = df[ , 8:9]
+head(y)
+
+z = df[ , 6:7]
+head(z)
+
+colMeans(x)
+colMeans(y)
+colMeans(z)
+
+rowMeans(x)
+rowMeans(y)
+rowMeans(z)
+```
+```{r}
+apply(df1[ , 10:11], 2, mean)
+apply(df1[ , 8:9], 2, mean)
+apply(df1[ , 6:7], 2, mean)
+
+apply(df1[ , 10:11], 1, mean)
+apply(df1[ , 8:9], 1, mean)
+apply(df1[ , 6:7], 1, mean)
+
+apply(df1[ , 10:11], 2, median)
+apply(df1[ , 8:9], 2, median)
+
+apply(df1[ , 10:11], 1, median)
+apply(df1[ , 8:9], 1, median)
+
+apply(df1[ , 10:11], 2, var)
+apply(df[ , 8:9], 2, var)
+
+apply(df1[ , 10:11], 1, var)
+apply(df[ , 8:9], 1, var)
+
+tapply(df1$Life.Ladder, df1$year, FUN = mean)
+tapply(df1$Log.GDP.per.capita, df1$year, FUN = mean)
+tapply(df1$Positive.affect, df1$year, FUN = mean)
+
+tapply(df1$Life.Ladder, df1$year, FUN = var)
+tapply(df1$Positive.affect, df1$year, FUN = var)
+
+tapply(df1$Life.Ladder, df1$ï..Country.name, FUN = mean)
+tapply(df1$Log.GDP.per.capita, df1$ï..Country.name, FUN = mean)
+tapply(df1$Positive.affect, df1$ï..Country.name, FUN = mean)
+
+aggregate(df1[ , 10:11], by = list(df1$year), FUN = mean)
+aggregate(df1[ , 8:9], by = list(df1$year), FUN = mean)
+
+```
+```{r}
+aggregate(df1[ , 10:11], by = list(df1$ï..Country.name), FUN = mean)
+aggregate(df1[ , 8:9], by = list(df1$ï..Country.name), FUN = mean)
+
+aggregate(cbind(df1$Log.GDP.per.capita, df1$Life.Ladder), data = df, by = list(df1$year), FUN = mean)
+aggregate(cbind(df1$Social.support, df1$Healthy.life.expectancy.at.birth), data = df, by = list(df1$year), FUN = mean)
+
+aggregate(df1$Life.Ladder ~ df1$year, data = df1, FUN = mean)
+aggregate(df1$Positive.affect ~ df1$year, data = df1, FUN = mean)
+
+head(na.omit(df))
+objects(df)
+ls(df)
+
+dflm = lm(Life.Ladder ~ year, data = df)
+dflm
+
+dflm1 = lm(Positive.affect ~ year, data = df)
+dflm1
+
+cor.test(~ df1$Life.Ladder + df1$Log.GDP.per.capita, data = df1)
+cor.test(~ df1$Negative.affect + df1$Positive.affect, data = df1)
+
+coef(dflm)
+coef(dflm1)
+
+confint(dflm)
+confint(dflm1)
+
+head(fitted(dflm))
+head(fitted(dflm1))
+
+head(residuals(dflm))
+head(residuals(dflm1))
+
+formula(dflm)
+formula(dflm1)
+```
+```{r}
+dflm$call
+dflm1$call
+
+formula(df1)
+
+df.m = apply(df1[,10:11], 2, mean)
+df.m
+
+df.m1 = apply(df1[,4:5], 2, mean)
+df.m1
+
+df.sd = apply(df1[ , 10:11], 2, sd)
+df.sd
+
+df.sd1 = apply(df1[ , 3:4], 2, sd)
+df.sd1
+
+df.s = apply(df1[,10:11], 2, sum)
+df.s
+
+df.s1 = apply(df1[,5:6], 2, sum)
+df.s1
+
+df.1 = df.s/df.m
+df.1
+
+df.2 = df.s1/df.m1
+df.2
+
+df.se = df.sd / sqrt(df.1)
+df.se
+
+df.se1 = df.sd1 / sqrt(df.2)
+df.se1
+
+df.m + df.se
+df.m1 + df.se1
+```
+```{r}
+max(df.m + df.se)
+max(df.m1 + df.se1)
+
+df.max = round(max(df.m + df.se) + 0.5, 0)
+df.max
+
+df.max1 = round(max(df.m1 + df.se1) + 0.5, 0)
+df.max1
+
+bp = barplot(df.m, ylim = c(0, df.max))
+bp1 = barplot(df.m1, ylim = c(0, df.max1))
+
+bp
+bp1
+
+bp = barplot(df.m, ylim = c(0, df.max))
+segments(bp, df.m + df.se, bp, df.m - df.se)
+segments(bp - 0.2, df.m - df.se, bp + 0.2, df.m - df.se)
+box()
+title(xlab = 'Features', ylab = 'Values')
+
+bp1 = barplot(df.m1, ylim = c(0, df.max1))
+segments(bp1, df.m1 + df.se1, bp1, df.m1 - df.se1)
+segments(bp1 - 0.2, df.m1 - df.se1, bp1 + 0.2, df.m1 - df.se1)
+box()
+title(xlab = 'Features', ylab = 'Values')
+
+```
+```{r}
+plot(1:10, 1:10, type = 'n')
+opt = par(cex = 1.5)
+text(1, 1, expression(hat(x)))
+text(2, 2, expression(alpha==x))
+text(3, 3, expression(beta==y))
+text(4, 4, expression(frac(x, y)))
+text(5, 5, expression(sum(x)))
+text(6, 6, expression(sum(x^2)))
+text(7, 7, expression(bar(x) == sum(frac(x[i], n), i==1, n)))
+text(8, 8, expression(sqrt(x)))
+text(9, 9, expression(sqrt(x, 3)))
+```
+```{r}
+plot(temp$Positive.affect ~ temp$Negative.affect, data = temp, pch = 21, ylab = 'Positive.affect', xlab = 'Negative.affect')
+points(temp$Positive.affect ~ temp$Negative.affect, data = temp, pch = 19)
+legend(x = 'topright', legend = c('Positive.affect', 'Negative.affect'), pch = c(21,19), bty = 
+'n')
+
+curve(sin, -pi*2, pi*2, lty = 2, lwd = 1.5, ylab = 'Function', ylim = c(-1,1.5))
+curve(cos, -pi*2, pi*2, lty = 3, lwd = 1, add = TRUE)
+legend(x = 'topright', legend = c('Sine', 'Cosine'), lty = c(2, 3), 
+lwd = c(1.5, 1), bty = 'n')
+title(main = 'Sine and Cosine functions')
+
+plot(temp$Positive.affect ~ temp$Negative.affect, data = df1, main = 'plot 1')
+plot(temp$Life.Ladder ~ temp$Log.GDP.per.capita, data = df1, main = 'plot 2')
+plot(temp$Generosity ~ temp$Social.support, data = df1, main = 'plot 3')
+
+par(opt)
+plot(temp2$Positive.affect ~ temp2$Negative.affect, data = df1, main = 'plot 4')
+plot(temp4$Life.Ladder ~ temp4$Generosity, data = df1, main = 'plot 5')
+
+plot.new()
+plot.new()
+plot(temp$Social.support ~ temp$Life.Ladder, data = df1, main = 'plot 6')
+```
+```{r}
+cummeadian = function(x) {
+tmp = seq_along(x)
+for(i in 1:length(tmp)) tmp[i] = median(x[1:i])
+print(x)}
+cummeadian(temp$Life.Ladder)
+
+cummeadian1 = function(x) {
+tmp = seq_along(x)
+for(i in 1:length(tmp)) tmp[i] = median(x[1:i])
+print(x)}
+cummeadian(temp1$Positive.affect)
+
+log2 = function(x) log(x, base = 2)
+log2
+
+log2(temp$Life.Ladder)
+log2(temp1$Positive.affect)
+
+manning = function(radius, gradient, coef=0.1125) (radius^(2/3)*gradient^0.5/coef)
+manning(radius = 1, gradient = 1/500)
+
+nlevels(df)
+```
+```{r}
+df[c(1,3,5,7),]
+df[c(1,3,5,7), 'year']
+df[c(1,145,67,56), 'ï..Country.name']
+
+library(dplyr)
+df %>% arrange(Positive.affect, Negative.affect)
+df %>% arrange(desc(Positive.affect))
+
+df %>% slice(15:20)
+df %>% slice_head(n = 3)
+df %>% slice_tail(n = 3)
+df %>% slice_sample(n = 5)
+
+
+df %>% mutate(Healthy.life.expectancy.at.birth_new = Healthy.life.expectancy.at.birth/10)
+
+df %>% transmute(Healthy.life.expectancy.at.birth_new = Healthy.life.expectancy.at.birth/10)
+
+df %>% relocate(Positive.affect, .before = Healthy.life.expectancy.at.birth)
+
+```
+```{r}
+head(select(df,year))
+     
+head(select(df,ï..Country.name))
+
+head(select(df, 1))
+select(df, 5)
+
+head(mutate(df, "year", 2))
+head(mutate(df, "ï..Country.name", 2))
+
+head(group_by(df, year = as.factor(year)))
+head(group_by(df1, ï..Country.name = as.factor(ï..Country.name)))
+
+df_matrix = data.matrix(df)
+head((df_matrix))
+
+nrow(df)
+ncol(df)
+
+range(max(df$Life.Ladder)-min(df$Life.Ladder))
+
+quantile(df1$Log.GDP.per.capita,c(0.25, 0.5, 0.75))
+
+IQR(df1$Social.support)
+
+head(unclass(df1$Healthy.life.expectancy.at.birth))
+head(unclass(df$Positive.affect))
+
+```
+```{r}
+inherits(df1$Life.Ladder,what = 'A',which=FALSE)
+inherits(df$year,what = 'A',which=FALSE)
+
+oldClass(df1$Life.Ladder)
+
+head(diff(df1$Healthy.life.expectancy.at.birth))
+
+head(scale(df1$Generosity,scale=T))
+head(scale(df1$Social.support,scale=T))
+
+length(df1$year)
+head(rep(df1$Life.Ladder))
+dim(df)
+
+head(dexp(df1$Life.Ladder, rate = 1, log = FALSE))
+head(dexp(df1$Social.support, rate = 1, log = FALSE))
+
+head(pexp(df$Life.Ladder, rate = 1, lower.tail = TRUE, log.p = FALSE))
+
+head(rexp(df1$Log.GDP.per.capita))
+
+head(dgamma(df1$Log.GDP.per.capita, shape=1, rate = 1, log = FALSE))
+
+head(pgamma(df1$Life.Ladder, shape=1, rate = 1, lower.tail = TRUE,log.p = FALSE))
+
+head(ppois(df1$Positive.affect, lambda=1, log = FALSE))
+
+head(qweibull(df1$Freedom.to.make.life.choices, shape=1, scale = 1, lower.tail = TRUE, log.p = FALSE))
+
+head(rcauchy(df1$Perceptions.of.corruption, location=1, scale=1))
+
+head(dbeta(df1$Negative.affect, shape1=1, shape2=2, ncp = 1, log = FALSE))
+```
+```{r}
+head(pt(df1$Perceptions.of.corruption, df=1, ncp=1, lower.tail = TRUE, log.p = FALSE))
+
+head(rf(df1$Positive.affect,df1=1,df2=1,ncp=1))
+
+help("rchisq")
+
+head(pbinom(df1$Life.Ladder, size=1, prob=.25, log = FALSE))
+
+head(rmultinom(df1$Social.support, size=1, prob=0.25))
+
+head(pgeom(df1$Log.GDP.per.capita, prob=.25, lower.tail = TRUE, log.p = FALSE))
+
+head(phyper(df1$Freedom.to.make.life.choices, m=1, n=1, k=1, lower.tail = TRUE, log.p = FALSE))
+
+head(rlogis(df1$Life.Ladder, location=0, scale=1))
+
+head(rlnorm(df1$Social.support, meanlog=0, sdlog=1))
+
+head(rnbinom(df1$Generosity,size = 1,mu=1))
+
+head(punif(df1$Positive.affect, min = 0, max = 1, log = TRUE))
+
+head(pwilcox(df1$Life.Ladder, m=1, n=1, log = FALSE))
+
+head(psignrank(df1$Negative.affect, n=1, lower.tail = TRUE, log.p = FALSE))
+
+```
+```{r}
+library(dplyr)
+df %>% filter(df1$year == '2020') %>% summary()
+summary(filter(df1, year == '2020'))
+plot(temp$Positive.affect, temp$Negative.affect)
+
+library(ggplot2)
+ggplot(temp, aes(x = temp$Positive.affect, y = temp$Negative.affect)) + geom_point()
+
+plot(temp$Life.Ladder, type = 'l')
+
+ggplot(temp, aes(x = Positive.affect, y = Negative.affect)) + geom_line()
+
+ggplot(temp, aes(x = temp$Positive.affect, y = temp$Negative.affect)) + geom_col()
+
+ggplot(temp, aes(x = temp$Positive.affect)) + geom_histogram(binwidth = .001)
+
+ggplot(temp, aes(x = temp$Positive.affect, y = temp$Negative.affect)) + geom_boxplot()
+
+ggplot(temp, aes(x = Positive.affect, y = Negative.affect)) + geom_col(fill = "lightblue", colour = "black")
+
+ggplot(df, aes(x = year, y = Positive.affect, fill = Negative.affect)) + geom_col(position = "dodge")
+
+ggplot(df, aes(x = year, y = ï..Country.name, fill = Positive.affect)) + geom_col(position = "dodge")
+
+ggplot(df, aes(x = Positive.affect, y = year)) + geom_point()
+
+```
+```{r}
+library(ggplot2)
+library(dplyr)
+ggplot(df, aes(x = Positive.affect, y = year)) +
+ geom_point(size = 3) + # Use a larger dot
+ theme_bw() +
+ theme(
+ panel.grid.major.x = element_blank(),
+ panel.grid.minor.x = element_blank(),
+ panel.grid.major.y = element_line(colour = "grey60", linetype = "dashed")
+ )
+
+ggplot(df, aes(x = Positive.affect, y = year)) +
+geom_segment(aes(yend = year), xend = 0, colour = "grey50") + 
+  geom_point(size = 2) 
+
+sample(df$Life.Ladder,size=4)
+sample(df$Life.Ladder,size=4,replace = TRUE)
+head(sample(df1$Life.Ladder[df1$Life.Ladder<5.0]))
+sample(df1$Life.Ladder[df1$Life.Ladder>40.0])
+
+tt = df %>% group_by(df$year) %>% summary()
+tt
+```
+
+
+
